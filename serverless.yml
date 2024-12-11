@@ -1,0 +1,28 @@
+org: onesoer
+app: training-app
+service: training-project
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+
+functions:
+  indexApi:
+    handler: index.handler
+    events:
+      - httpApi:
+          path: /
+          method: get
+  userApi:
+    handler: ./services/user.handler
+    events:
+      - httpApi:
+          path: /user
+          method: get
+  countryApi:
+    handler: country.handler
+    events:
+      - httpApi:
+          path: /country
+          method: get
